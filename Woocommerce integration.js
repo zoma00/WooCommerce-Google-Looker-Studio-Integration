@@ -52,9 +52,9 @@ function writeToSheet(sheetName, data, headers) {
 
 // Function to save WooCommerce products and orders into Google Sheets
 function saveWooCommerceDataToSheet() {
-  const storeUrl = "https://api.asherbiny.com/"; // Replace with your WooCommerce store URL
-  const consumerKey = "ck_9be2852f913a522ba117585c8a09bb1bb993d827"; // Replace with your consumer key
-  const consumerSecret = "cs_1bc824d1db756026b448708888589a605040301d"; // Replace with your consumer secret
+  const storeUrl = "https://api.zoma.com/"; // Replace with your WooCommerce store URL
+  const consumerKey = "ck consumer key"; // Replace with your consumer key
+  const consumerSecret = "cs. consumer secret"; // Replace with your consumer secret
 
   // Config for products
   const productConfig = {
@@ -127,8 +127,8 @@ function writeToSheet(sheetName, data, headers) {
 // Function to save WooCommerce products and orders into Google Sheets
 function saveWooCommerceDataToSheet() {
   const storeUrl = "https://api.asherbiny.com/"; // Replace with your WooCommerce store URL
-  const consumerKey = "ck_9be2852f913a522ba117585c8a09bb1bb993d827"; // Replace with your consumer key
-  const consumerSecret = "cs_1bc824d1db756026b448708888589a605040301d"; // Replace with your consumer secret
+  const consumerKey = "CK put your consumer key"; // Replace with your consumer key
+  const consumerSecret = "cs consumer secret"; // Replace with your consumer secret
 
   // Config for products
   const productConfig = {
@@ -187,8 +187,8 @@ function doGet() {
 // Function to get WooCommerce products and orders for the HTML
 function getWooCommerceDataForHTML(type) {
   const storeUrl = "https://api.asherbiny.com/"; // Replace with your WooCommerce store URL
-  const consumerKey = "ck_9be2852f913a522ba117585c8a09bb1bb993d827"; // Replace with your consumer key
-  const consumerSecret = "cs_1bc824d1db756026b448708888589a605040301d"; // Replace with your consumer secret
+  const consumerKey = "ck"; // Replace with your consumer key
+  const consumerSecret = "cs"; // Replace with your consumer secret
 
   // Configurations for products and orders
   const config = {
