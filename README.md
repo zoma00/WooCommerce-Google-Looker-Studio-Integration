@@ -1,4 +1,3 @@
----
 *** WooCommerce Data Viewer ***
 -
 -  Description
@@ -50,5 +49,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Author
 
 -Hazem Elbatawy 
----
+
 
