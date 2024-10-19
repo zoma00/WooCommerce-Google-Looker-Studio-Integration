@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <title>WooCommerce Data Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>WooCommerce Data Viewer</h1>
+
+  <div>
+    <button onclick="fetchData('products')">Fetch Products</button>
+    <button onclick="fetchData('orders')">Fetch Orders</button>
+  </div>
+
+  <div id="dataContainer"></div>
+
+  <script>
+    function fetchData(type) {
+      google.script.run.withSuccessHandler(displayData).getWooCommerceDataForHTML(type);
+    }
+
+    function displayData(data) {
+      if (!data || data.length === 0) {
+        document.getElementById('dataContainer').innerHTML = '<p>No data available.</p>';
+        return;
+      }
+
+      let table = '<table><tr>';
+
+      // Generate table headers
+      let headers = Object.keys(data[0]);
+      headers.forEach(header => {
+        table += '<th>' + header + '</th>';
+      });
+
+      table += '</tr>';
+
+      // Generate table rows
+      data.forEach(item => {
+        table += '<tr>';
+        headers.forEach(header => {
+          table += '<td>' + item[header] + '</td>';
+        });
+        table += '</tr>';
+      });
+
+      table += '</table>';
+      document.getElementById('dataContainer').innerHTML = table;
+    }
+  </script>
+</body>
+</html>
