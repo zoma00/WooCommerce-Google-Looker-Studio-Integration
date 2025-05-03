@@ -18,7 +18,7 @@
 <div>
 <p align="center">
   <a href="https://developers.google.com/apps-script" target="_blank">
-    <img src="looker-icon-svgrepo-com.svg" width="200" alt="looker-studio Logo">
+    <img src="looker-icon-svgrepo-com.svg" width="100" alt="looker-studio Logo">
   apps-script Google Developer
   </a>
 </p>
