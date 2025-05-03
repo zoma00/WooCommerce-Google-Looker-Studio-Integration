@@ -1,8 +1,10 @@
 <p align="center">
   <a href="https://woocommerce.com/document/woocommerce-rest-api/" target="_blank">
+    <img src="https://woocommerce.com/wp-content/uploads/2021/07/woocommerce-logo.svg" alt="WooCommerce Logo" width="100" style="vertical-align: middle;">
     WooCommerce REST API Documentation
   </a>
 </p>
+
 
 
 
