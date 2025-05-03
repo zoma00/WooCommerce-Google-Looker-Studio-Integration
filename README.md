@@ -32,7 +32,7 @@
 -
 -  Description
 
-The WooCommerce Data Viewer is a powerful Google Apps Script application that seamlessly integrates with your WooCommerce store, enabling you to fetch product and order data directly into Google Sheets. To get started, you'll need to integrate WooCommerce v3 with your WordPress site, then configure the connection to Google Apps Script for data retrieval. Once the data is imported into Google Sheets, you can leverage Looker Studio to create insightful demo analytics and visualize your e-commerce performance in real time.
+The WooCommerce Data Fetcher is a powerful API-based WordPress plugin that enables you to fetch data from your WooCommerce store and integrate it with Google Cloud Private Cloud for secure storage. The plugin uses the WooCommerce REST API v3 to retrieve data, such as product, order, and customer information, from your WordPress site. Once the data is fetched, it can be visualised in Google Sheets using Google Apps Script. Finally, you can connect your data to Looker Studio for creating real-time analytics, reports, and dashboards.
 ## Features
 
 - Fetch and Display Product and Order Data: Easily retrieve detailed product and order information from your WooCommerce store.
