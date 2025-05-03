@@ -1,9 +1,20 @@
+<div>
+<p align="center">
+  <a href="https://wordpress.org/documentation/" target="_blank">
+    <img src="woocommerce-svgrepo-com.svg" width="200" alt="woocommerce- Logo">
+    WordPress Documentation
+  </a>
+</p>
+</div>
+
+<div>
 <p align="center">
   <a href="https://woocommerce.com/document/woocommerce-rest-api/" target="_blank">
     <img src="woocommerce-svgrepo-com.svg" width="200" alt="woocommerce- Logo">
     WooCommerce REST API Documentation
   </a>
 </p>
+</div>
 <div>
 <p align="center">
   <a href="https://developers.google.com/apps-script" target="_blank">
@@ -11,9 +22,6 @@
   apps-script Google Developer
   </a>
 </p>
-
-
-  
 </div>
 
 
@@ -24,20 +32,21 @@
 -
 -  Description
 
-The **WooCommerce Data Viewer** is a Google Apps Script application that fetches data from a WooCommerce store and displays it in Google Sheets. The app allows users to retrieve product and order information using the WooCommerce REST API, making it easy to manage and analyze e-commerce data.
-
+The WooCommerce Data Viewer is a powerful Google Apps Script application that seamlessly integrates with your WooCommerce store, enabling you to fetch product and order data directly into Google Sheets. To get started, you'll need to integrate WooCommerce v3 with your WordPress site, then configure the connection to Google Apps Script for data retrieval. Once the data is imported into Google Sheets, you can leverage Looker Studio to create insightful demo analytics and visualize your e-commerce performance in real time.
 ## Features
 
-- Fetch and display products and orders from WooCommerce
-- Save data directly to Google Sheets
-- Simple HTML interface for viewing the data
+- Fetch and Display Product and Order Data: Easily retrieve detailed product and order information from your WooCommerce store.
+- Direct Data Storage: Save your e-commerce data directly into Google Sheets, making it available for further manipulation and analysis.
+- Simple and Intuitive User Interface: A clean, easy-to-navigate HTML interface that simplifies data management and viewing.
+- Data Visualization: Use built-in Google Apps Script functions to generate charts and graphs, helping you visualize key e-commerce metrics.
+- Looker Studio Integration: Connect Google Sheets data to Looker Studio for advanced analytics, custom dashboards, and comprehensive reports.
 
 ## Technologies Used
-
-- Google Apps Script
-- WooCommerce REST API v3
-- Google Sheets API
-- HTML/CSS for the frontend
+- Google Apps Script: Automates the fetching and processing of WooCommerce data within Google Sheets.
+- WooCommerce REST API v3: Provides access to WooCommerce store data, enabling product, order, and customer queries.
+- Google Sheets API: Facilitates direct communication between Google Apps Script and Google Sheets for seamless data storage and management.
+- HTML/CSS: A minimalistic front-end interface to display and interact with the data in an organized and user-friendly way.
+- Looker Studio: Used to visualize and analyze e-commerce data from Google Sheets for powerful reporting.
 
 ## Installation
 
