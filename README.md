@@ -1,14 +1,14 @@
 <p align="center">
   <a href="https://woocommerce.com/document/woocommerce-rest-api/" target="_blank">
-    <img src="woocommerce-svgrepo-com.svg" width="400" alt="woocommerce- Logo">
+    <img src="woocommerce-svgrepo-com.svg" width="200" alt="woocommerce- Logo">
     WooCommerce REST API Documentation
   </a>
 </p>
 <div>
 <p align="center">
   <a href="https://developers.google.com/apps-script" target="_blank">
-    <img src="looker-icon-svgrepo-com.svg" width="400" alt="looker-studio Logo">
-    WooCommerce REST API Documentation
+    <img src="looker-icon-svgrepo-com.svg" width="200" alt="looker-studio Logo">
+  apps-script Google Developer
   </a>
 </p>
 
