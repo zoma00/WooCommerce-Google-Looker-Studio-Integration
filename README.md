@@ -1,7 +1,7 @@
 <div>
 <p align="center">
   <a href="https://wordpress.org/documentation/" target="_blank">
-    <img src="woocommerce-svgrepo-com.svg" width="200" alt="woocommerce- Logo">
+    <img src="wordpress-logo-svgrepo-com.svg" width="200" alt="woocommerce- Logo">
     WordPress Documentation
   </a>
 </p>
