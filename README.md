@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://woocommerce.com/document/woocommerce-rest-api/" target="_blank">
-    <img src="woocommerce-.svg" width="400" alt="woocommerce- Logo">
+    <img src="woocommerce-svgrepo-com.svg" width="400" alt="woocommerce- Logo">
     WooCommerce REST API Documentation
   </a>
 </p>
