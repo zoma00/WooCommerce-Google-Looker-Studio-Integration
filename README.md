@@ -1,28 +1,26 @@
-<div>
-<p align="center">
-  <a href="https://wordpress.org/documentation/" target="_blank">
-    <img src="wordpress-logo-svgrepo-com.svg" width="200" alt="woocommerce- Logo">
-    WordPress Documentation
-  </a>
-</p>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <p align="left">
+    <a href="https://wordpress.org/documentation/" target="_blank">
+      <img src="wordpress-logo-svgrepo-com.svg" width="200" alt="woocommerce- Logo">
+      WordPress Documentation
+    </a>
+  </p>
+
+  <p align="center">
+    <a href="https://woocommerce.com/document/woocommerce-rest-api/" target="_blank">
+      <img src="woocommerce-svgrepo-com.svg" width="200" alt="woocommerce- Logo">
+      WooCommerce REST API Documentation
+    </a>
+  </p>
+
+  <p align="right">
+    <a href="https://developers.google.com/apps-script" target="_blank">
+      <img src="looker-icon-svgrepo-com.svg" width="100" alt="looker-studio Logo">
+      apps-script Google Developer
+    </a>
+  </p>
 </div>
 
-<div>
-<p align="center">
-  <a href="https://woocommerce.com/document/woocommerce-rest-api/" target="_blank">
-    <img src="woocommerce-svgrepo-com.svg" width="200" alt="woocommerce- Logo">
-    WooCommerce REST API Documentation
-  </a>
-</p>
-</div>
-<div>
-<p align="center">
-  <a href="https://developers.google.com/apps-script" target="_blank">
-    <img src="looker-icon-svgrepo-com.svg" width="100" alt="looker-studio Logo">
-  apps-script Google Developer
-  </a>
-</p>
-</div>
 
 
 
