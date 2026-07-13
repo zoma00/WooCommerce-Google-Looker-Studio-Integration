@@ -1,0 +1,16 @@
+{
+  "name": "woocommerce-google-looker-studio-integration",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A tested Google Apps Script proof of concept for WooCommerce reporting workflows.",
+  "scripts": {
+    "lint": "eslint Code.js tests",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

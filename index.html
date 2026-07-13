@@ -1,72 +1,84 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <base target="_top">
-  <title>WooCommerce Data Viewer</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    table, th, td {
-      border: 1px solid black;
-    }
-    th, td {
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-  </style>
-</head>
-<body>
-  <h1>WooCommerce Data Viewer</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WooCommerce Data Viewer</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; color: #202124; }
+      button { margin-right: 0.5rem; padding: 0.6rem 1rem; }
+      table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+      th, td { border: 1px solid #dadce0; padding: 0.6rem; text-align: left; }
+      th { background: #f8f9fa; }
+      #status { min-height: 1.5rem; margin-top: 1rem; }
+    </style>
+  </head>
+  <body>
+    <h1>WooCommerce Data Viewer</h1>
+    <p>Load a read-only view of products or orders from the configured store.</p>
 
-  <div>
-    <button onclick="fetchData('products')">Fetch Products</button>
-    <button onclick="fetchData('orders')">Fetch Orders</button>
-  </div>
+    <div>
+      <button type="button" data-endpoint="products">Fetch products</button>
+      <button type="button" data-endpoint="orders">Fetch orders</button>
+    </div>
 
-  <div id="dataContainer"></div>
+    <p id="status" role="status" aria-live="polite"></p>
+    <div id="dataContainer"></div>
 
-  <script>
-    function fetchData(type) {
-      google.script.run.withSuccessHandler(displayData).getWooCommerceDataForHTML(type);
-    }
+    <script>
+      const statusElement = document.getElementById("status");
+      const dataContainer = document.getElementById("dataContainer");
 
-    function displayData(data) {
-      if (!data || data.length === 0) {
-        document.getElementById('dataContainer').innerHTML = '<p>No data available.</p>';
-        return;
+      function displayError(error) {
+        dataContainer.replaceChildren();
+        statusElement.textContent = error && error.message
+          ? error.message
+          : "The request could not be completed.";
       }
 
-      let table = '<table><tr>';
+      function displayData(data) {
+        dataContainer.replaceChildren();
 
-      // Generate table headers
-      let headers = Object.keys(data[0]);
-      headers.forEach(header => {
-        table += '<th>' + header + '</th>';
-      });
+        if (!Array.isArray(data) || data.length === 0) {
+          statusElement.textContent = "No data available.";
+          return;
+        }
 
-      table += '</tr>';
-
-      // Generate table rows
-      data.forEach(item => {
-        table += '<tr>';
-        headers.forEach(header => {
-          table += '<td>' + item[header] + '</td>';
+        const headers = Object.keys(data[0]);
+        const table = document.createElement("table");
+        const headerRow = table.createTHead().insertRow();
+        headers.forEach((header) => {
+          const cell = document.createElement("th");
+          cell.scope = "col";
+          cell.textContent = header;
+          headerRow.appendChild(cell);
         });
-        table += '</tr>';
-      });
 
-      table += '</table>';
-      document.getElementById('dataContainer').innerHTML = table;
-    }
-  </script>
-</body>
+        const body = table.createTBody();
+        data.forEach((item) => {
+          const row = body.insertRow();
+          headers.forEach((header) => {
+            row.insertCell().textContent = String(item[header] ?? "");
+          });
+        });
+
+        dataContainer.appendChild(table);
+        statusElement.textContent = `Loaded ${data.length} records.`;
+      }
+
+      function fetchData(type) {
+        statusElement.textContent = "Loading…";
+        dataContainer.replaceChildren();
+        google.script.run
+          .withSuccessHandler(displayData)
+          .withFailureHandler(displayError)
+          .getWooCommerceDataForHTML(type);
+      }
+
+      document.querySelectorAll("[data-endpoint]").forEach((button) => {
+        button.addEventListener("click", () => fetchData(button.dataset.endpoint));
+      });
+    </script>
+  </body>
 </html>

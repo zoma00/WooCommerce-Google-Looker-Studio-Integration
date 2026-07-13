@@ -1,79 +1,88 @@
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <p align="left">
-    <a href="https://wordpress.org/documentation/" target="_blank">
-      <img src="wordpress-logo-svgrepo-com.svg" width="200" alt="woocommerce- Logo">
-    </a>
-  </p>
+# WooCommerce to Looker Studio Integration
 
-  <p align="center">
-    <a href="https://woocommerce.com/document/woocommerce-rest-api/" target="_blank">
-      <img src="woocommerce-svgrepo-com.svg" width="200" alt="woocommerce- Logo">
-    </a>
-  </p>
+<p align="center">
+  <a href="https://wordpress.org/documentation/"><img src="wordpress-logo-svgrepo-com.svg" height="64" alt="WordPress"></a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://woocommerce.com/document/woocommerce-rest-api/"><img src="woocommerce-svgrepo-com.svg" height="64" alt="WooCommerce"></a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://cloud.google.com/looker/docs/studio"><img src="looker-icon-svgrepo-com.svg" height="64" alt="Looker Studio"></a>
+</p>
 
-  <p align="right">
-    <a href="https://developers.google.com/apps-script" target="_blank">
-      <img src="looker-icon-svgrepo-com.svg" width="100" alt="looker-studio Logo">
-    </a>
-  </p>
-</div>
+<p align="center">
+  <a href="https://github.com/zoma00/WooCommerce-Google-Looker-Studio-Integration/actions/workflows/ci.yml"><img src="https://github.com/zoma00/WooCommerce-Google-Looker-Studio-Integration/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <img src="https://img.shields.io/badge/status-proof_of_concept-F59E0B" alt="Status: proof of concept">
+  <img src="https://img.shields.io/badge/WooCommerce-REST_API-96588A?logo=woocommerce&logoColor=white" alt="WooCommerce REST API">
+  <img src="https://img.shields.io/badge/Google-Apps_Script-4285F4?logo=googleappsscript&logoColor=white" alt="Google Apps Script">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22C55E" alt="MIT license"></a>
+</p>
 
+A proof-of-concept reporting workflow that retrieves product and order data from the WooCommerce REST API, writes structured records to Google Sheets, and makes the sheet available as a Looker Studio data source.
 
+This is a Google Apps Script integration, not a WordPress plugin or a production-ready connector.
 
+## Integration Flow
 
+```text
+WooCommerce REST API
+        |
+        | HTTPS + Basic authentication header
+        v
+Google Apps Script
+        |
+        +----> Google Sheets
+        |          |
+        |          v
+        |     Looker Studio
+        |
+        +----> HTML data viewer
+```
 
+## What It Demonstrates
 
-*** WooCommerce Data Viewer ***
--
--  Description
+- WooCommerce REST API v3 integration for products and orders
+- Server-side credential retrieval from Apps Script Properties
+- Authorization through an HTTP header, keeping credentials out of request URLs
+- Response validation and explicit handling of non-success HTTP status codes
+- Normalization of API data before it is written to separate spreadsheet tabs
+- Safe browser rendering with DOM APIs and `textContent`
+- Automated unit tests, ESLint, and GitHub Actions CI
 
-The WooCommerce Data Fetcher is a powerful API-based WordPress plugin that enables you to fetch data from your WooCommerce store and integrate it with Google Cloud Private Cloud for secure storage. The plugin uses the WooCommerce REST API v3 to retrieve data, such as product, order, and customer information, from your WordPress site. Once the data is fetched, it can be visualised in Google Sheets using Google Apps Script. Finally, you can connect your data to Looker Studio for creating real-time analytics, reports, and dashboards.
-## Features
+## Configuration
 
-- Fetch and Display Product and Order Data: Easily retrieve detailed product and order information from your WooCommerce store.
-- Direct Data Storage: Save your e-commerce data directly into Google Sheets, making it available for further manipulation and analysis.
-- Simple and Intuitive User Interface: A clean, easy-to-navigate HTML interface that simplifies data management and viewing.
-- Data Visualization: Use built-in Google Apps Script functions to generate charts and graphs, helping you visualize key e-commerce metrics.
-- Looker Studio Integration: Connect Google Sheets data to Looker Studio for advanced analytics, custom dashboards, and comprehensive reports.
+1. Create a Google Sheet and open **Extensions > Apps Script**.
+2. Copy `Code.js` into the Apps Script `Code.gs` editor file.
+3. Add an HTML file named `index` and copy `index.html` into it.
+4. In **Project Settings > Script Properties**, add:
 
-## Technologies Used
-- Google Apps Script: Automates the fetching and processing of WooCommerce data within Google Sheets.
-- WooCommerce REST API v3: Provides access to WooCommerce store data, enabling product, order, and customer queries.
-- Google Sheets API: Facilitates direct communication between Google Apps Script and Google Sheets for seamless data storage and management.
-- HTML/CSS: A minimalistic front-end interface to display and interact with the data in an organized and user-friendly way.
-- Looker Studio: Used to visualize and analyze e-commerce data from Google Sheets for powerful reporting.
+   | Property | Example |
+   |---|---|
+   | `WOOCOMMERCE_STORE_URL` | `https://store.example.com` |
+   | `WOOCOMMERCE_CONSUMER_KEY` | A read-only WooCommerce consumer key |
+   | `WOOCOMMERCE_CONSUMER_SECRET` | Its matching consumer secret |
 
-## Installation
+5. Run `saveWooCommerceDataToSheet` and approve the required Apps Script permissions.
+6. Connect the populated Google Sheet to Looker Studio if reporting is required.
 
-1. Clone this repository to your local machine.
+Use read-only WooCommerce credentials for this demonstration. Never commit credentials, place them directly in source code, or share them in screenshots and logs.
 
-   ```bash
-   git clone https://github.com/yourusername/WooCommerce-Data-Viewer.git
-   ```
+## Local Quality Checks
 
-2. Open Google Sheets and create a new spreadsheet.
+The Apps Script services are not available in Node.js, so the tests cover the portable integration logic: URL construction, endpoint validation, credential-header construction, and response-field selection.
 
-3. In the spreadsheet, go to **Extensions > Apps Script**.
+```bash
+npm ci
+npm run lint
+npm test
+```
 
-4. Copy the contents of the `Code.gs` file from this repository and paste it into the Apps Script editor.
+## Scope
 
-5. Create a new HTML file in the Apps Script editor named `index.html` and copy the corresponding HTML code.
-
-6. Replace the placeholder values for `storeUrl`, `consumerKey`, and `consumerSecret` in the code with your WooCommerce API credentials.
-
-7. Save the project and run the `saveWooCommerceDataToSheet` function to fetch data from your WooCommerce store.
-
-## Usage
-
-- Run the `saveWooCommerceDataToSheet` function to fetch and save products and order data into Google Sheets.
-- Access the deployed web app URL by using the HTML interface to view the data.
+The current proof of concept imports the first 100 product and order records. Production use would still require pagination, incremental synchronization, retry/backoff behavior, rate-limit handling, monitoring, and a defined data-retention policy.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Licensed under the [MIT License](LICENSE).
 
 ## Author
 
--Hazem Elbatawy 
-
-
+[Hazem Adel Elbatawy](https://github.com/zoma00)
