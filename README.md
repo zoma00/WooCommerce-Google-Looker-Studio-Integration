@@ -22,20 +22,9 @@ This is a Google Apps Script integration, not a WordPress plugin or a production
 
 ## Integration Flow
 
-```text
-WooCommerce REST API
-        |
-        | HTTPS + Basic authentication header
-        v
-Google Apps Script
-        |
-        +----> Google Sheets
-        |          |
-        |          v
-        |     Looker Studio
-        |
-        +----> HTML data viewer
-```
+<p align="center">
+  <img src="docs/integration-flow.svg" width="900" alt="WooCommerce REST API v3 sends authenticated data to Google Apps Script, which writes to Google Sheets for Looker Studio reporting and serves an HTML data viewer.">
+</p>
 
 ## What It Demonstrates
 
